@@ -1,0 +1,95 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'quote/calculator.css' %}">
+    <title>Calculator</title>
+</head>
+
+<body>
+<header>
+    OrugaRent
+    <nav>
+    </nav>
+</header>
+
+<main>
+    <section class="firstSection">
+
+        <div class="fs_first">
+            <h2>Alquiler de laptops para empresas en Lima</h2>
+            <p id="service">Alquilamos laptops a empresas, el servicio incluye Help Desk y un software para administrar tus facturas y solicitar ayuda</p>
+            <p id="mision">La misión: Que nuestros clientes se enfoquen en su negocio y crezcan</p>
+
+        </div>
+
+        <div class="fs_second">
+
+            <h4>Recibe tu cotización ya!</h4><br>
+
+            <div class="circle one"></div>
+
+            <div class="circle two"></div>
+
+            <div class="calculator">
+
+                <div class="topDiv">
+                    <div class="topPhrase">Cuota de alquiler estimada </div>
+                    <div class="topField">
+                        <div class="price">$65</div>
+                    </div>
+                </div>
+
+                <div class="coreField">
+                    <div>
+                    <button type="button" id="buttonI5" class="button activated" value="650" >core i5</button>
+                    <button type="button" id="buttonI7" class="button" value="1000">core i7</button>
+                    </div>
+                </div>
+
+                <div class="quantity Field">
+                    <div class="fieldName">Cantidad de laptops</div>
+                    <div class="number">10</div>
+                    <input type="range" min="1" max="100" value="10">
+                </div>
+
+                <div class="duration Field">
+                    <div class="fieldName">Duración del alquiler</div>
+                    <div class="number">6</div>
+                    <input type="range" min="1" max="36", value="6">
+                </div>
+
+                <div class="quoteButton">Envíame la cotización</div>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+<br><br>
+
+
+<footer>
+    <form action="/pdf/" method="post" class="form_test">
+    {% csrf_token %}
+    <div>
+        <label for="name" class="label_test">Name</label>
+        <input type="text", name="name", id="name" placeholder="Andree">
+    </div>
+
+    <div>
+        <label for="password" class="label_test">Password</label>
+        <input type="password", name="password", id="password">
+    </div>
+
+    <button type="submit">submit</button>
+</form>
+
+
+
+</footer>
+<script type="text/javascript" src="{% static 'quote/calculator.js' %}"></script>
+</body>
+</html>

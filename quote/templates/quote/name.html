@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<title>Página principal</title>
+<body>
+
+<form action="/your-contact/" method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>
+

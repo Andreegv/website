@@ -1,0 +1,250 @@
+html, body {
+    /*display: grid;
+    height: 100%;
+    text-align: center;
+    place-items: center;*/
+    background: white;
+}
+
+.range {
+    height: 80px;
+    width: 380px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 0 65px 0 45px;
+}
+
+.range .field {
+    position: relative;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.range .field .value {
+    position:absolute;
+    font-size: 18px;
+    font-weight: 600;
+    color: blue;
+}
+
+.range .field .value.left {
+    left: -22px;
+}
+
+.range .field .value.right {
+    right: -43px;
+}
+
+
+.range .field input {
+    -webkit-appearance: none;
+    height: 3px;
+    width: 100%;
+    background: #ddd;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+}
+
+.range .field input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 20px;
+    width: 20px;
+    background: blue;
+    border-radius: 50%;
+    border: 1px solid white;
+    cursor: pointer;
+}
+
+.range .field input::-moz-range-progress {
+    background: blue;
+
+}
+
+.slider_value {
+    position: relative;
+    width:100%;
+
+}
+
+
+.range .slider_value span{
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    color: white;
+    font-weight: 500;
+    top: -40px;
+    transform: translate(-50%) scale(0);
+    transform-origin: bottom;
+    transition: transform 0.3s ease-in-out;
+    line-height: 55px;
+    z-index: 2;
+
+}
+
+.range .slider_value span.show{
+    transform: translate(-50%) scale(1);
+}
+
+.range .slider_value span::after {
+    content: '';
+    position: absolute;
+    height: 45px;
+    width: 45px;
+    background: blue;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    border: 3px solid white;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    z-index: -1;
+}
+
+.box1 {
+    background: black;
+    color: white;
+    height: 50px;
+    width: 50px;
+}
+
+.boxField {
+    display: flex;
+    border: solid 1px grey;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.boxA {
+    background: blueviolet;
+    border: solid 1px grey;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.boxB {
+    background: yellow;
+    border: solid 1px grey;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+label input:checked ~ label input {
+    background: red;
+}
+
+#accept {
+
+
+}
+
+.container {
+
+
+}
+
+.checkmark{
+    background: blueviolet;
+    height: 15px;
+    width: 15px;
+    transform: translateY(2px);
+    position: absolute;
+    border-radius: 5px;
+
+
+}
+
+#floater {
+    height: 30px;
+    width: 30px;
+    background: yellow;
+
+}
+
+.chiva {
+    background: red;
+    height: 20px;
+    width: 200px;
+}
+
+.caja1 {
+    height: 250px;
+    width: 500px;
+    border: solid 1px black;
+}
+
+.caja2 {
+    height: 250px;
+    width: 500px;
+    border: solid 1px black;
+    position: relative;
+
+
+
+}
+
+.caja2_1 {
+    height: 25px;
+    width: 450px;
+    border: solid 1px black;
+
+
+}
+
+.caja2_2 {
+    background: green;
+    height: 25px;
+    width: 450px;
+    border: solid 10px black;
+    position: absolute;
+    top: -40px;
+
+}
+
+.short {
+    width: 20%;
+    color: blueviolet;
+    border: 1px solid black;
+    padding: 8px;
+    background: lightgrey;
+    border-radius: 8px;
+}
+
+.hellospan {
+    height: 20px;
+    width: 20px;
+}
+
+.one {
+    border: solid 1px black;
+}
+
+.two {
+    font-size: 60px;
+    border: solid 1px black;
+
+}
+
+.three {
+
+    border: solid 1px black;
+
+}
+
+.triangle {
+
+    border-bottom: 50px solid white;
+    border-right: 50px solid black;
+
+}
+
+.triangle_2 {
+    margin-top: 10px;
+    border: 20px solid black;
+    padding: 5px;
+}

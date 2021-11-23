@@ -1,0 +1,194 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+<head>
+
+    <link rel="stylesheet" href="{% static 'quote/home.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cotizador Web</title>
+</head>
+<body>
+    <div class="range">
+        <div class="slider_value">
+            <span>100</span>
+
+        </div>
+        <div class="field">
+            <div class="value left">0</div>
+            <input type="range" class="duration_input" min="0" max="200" value="100">
+            <div class="value right">200</div>
+
+        </div>
+    </div>
+
+    <span class="box1">hello</span>
+    <div class="boxField">
+        <button class="boxA">boxA</button>
+        <button class="boxB">boxB</button>
+    </div>
+    <br><br><br>
+
+
+<label class="container">One
+  <input type="checkbox" checked="checked">
+</label>
+
+<label class="container">Two
+  <input type="checkbox">
+</label>
+
+<label class="container">Three
+  <input type="checkbox">
+</label>
+
+<label class="container">Four
+  <input type="checkbox">
+</label>
+
+    <br><br>
+
+
+<label class="container" for="accept">Accept
+   <input type="checkbox" id="accept" name="accept" value="yes">
+    <span class="checkmark"></span>
+    <article>si hago clic aquí debe activarse por estar dentro del label</article>
+</label>
+
+<div class="chiva"></div>
+
+<span id="floater">hello</span>
+
+
+<p id="pChecker">Me hicieron clic</p>
+
+
+
+<div class="caja1"></div>
+<div class="caja2">
+    <div class="caja2_1"></div>
+    <div class="caja2_2"></div>
+    <article>this is a blockelement</article>
+    <input type="button">
+    <span class="hellospan">hello</span>
+    <span class="one">Esto</span>
+    <span class="two">Es</span>
+    <span class="three">Prueba</span>
+
+    <article>this is a blockelement</article>
+</div>
+
+<p>The little kitten gently seated herself on a piece of
+carpet. Later in her life, this would be referred to as the time the
+cat sat on the mat.</p>
+<fieldset>
+ <legend>Personal information</legend>
+ <p>
+   <label>Name: <input name="n"></label>
+   <label><input name="anon" type="checkbox"> Hide from other users</label>
+ </p>
+ <p><label>Address: <textarea name="a"></textarea></label></p>
+</fieldset>
+<p>There was once an example from Femley,<br>
+Whose markup was of dubious quality.<br>
+The validator complained,<br>
+So the author was pained,<br>
+To move the error from the markup to the rhyming.</p>
+
+<section>
+ <!-- ... -->
+ <p>Last modified: 2001-04-23</p>
+ <p>Author: fred@example.com</p>
+</section>
+
+
+<section>
+ <!-- ... -->
+ <footer>Last modified: 2001-04-23</footer>
+ <address>Author: fred@example.com</address>
+</section>
+
+<section>
+ <!-- ... -->
+ <footer>
+  <p>Last modified: 2001-04-23</p>
+  <address>Author: fred@example.com</address>
+ </footer>
+</section>
+
+<section>
+ <h1>Communication</h1>
+ <p>There are various methods of communication. This section
+ covers a few of the important ones used by the project.</p>
+ <hr>
+ <p class="short">Communication stones seem to come in pairs and have mysterious
+ properties:</p>
+ <ul>
+  <li>They can transfer thoughts in two directions once activated
+  if used alone.</li>
+  <li>If used with another device, they can transfer one's
+  consciousness to another body.</li>
+  <li>If both stones are used with another device, the
+  consciousnesses switch bodies.</li>
+ </ul>
+ <hr>
+ <p>Radios use the electromagnetic spectrum in the meter range and
+ longer.</p>
+ <hr>
+ <p>Signal flares use the electromagnetic spectrum in the
+ nanometer range.</p>
+</section>
+
+<p>This is the <code>Panel</code> constructor:</p>
+<pre><code>function Panel(element, canClose, closeHandler) {
+  this.element = element;
+  this.canClose = canClose;
+  this.closeHandler = function () { if (closeHandler) closeHandler() };
+}</code></pre>
+
+<pre><samp>You are in an open field west of a big white house with a boarded
+front door.
+There is a small mailbox here.
+
+></samp> <kbd>open mailbox</kbd>
+<samp>Opening the mailbox reveals:
+A leaflet.
+
+></samp></pre>
+
+<pre>                maxling
+
+it is with a          heart
+               heavy
+
+that i admit loss of a feline
+        so           loved
+
+a friend lost to the
+        unknown
+                                (night)
+
+~cdr 11dec07</pre>
+
+<blockquote>
+ <p>[Jane] then said she liked [...] fish.</p>
+</blockquote>
+
+    <br><br>
+<div class="triangle"></div>
+<div class="triangle_2"></div>
+
+    <br><br>
+
+    <input type="button", name="core i5">
+
+
+
+<script type="text/javascript" src="{% static 'quote/home.js' %}"></script>
+
+</body>
+
+</html>
