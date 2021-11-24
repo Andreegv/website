@@ -5,20 +5,24 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
 from django.core.mail import send_mail
 from .forms import NameForm, ContactForm
+from xhtml2pdf import pisa
+from django.contrib.staticfiles import finders
 
 
 def get_name(request):
+
     if request.method == 'POST':
         form = NameForm(request.POST)
         if form.is_valid():
 
             return HttpResponse('thanks')
         else:
-            return HttpResponseRedirect('/i-suck/')
+            return HttpResponse('i-suck')
     else:
         form = NameForm()
+        context = {'form': form}
 
-    return render(request, 'quote/name.html', {'form': form})
+    return render(request, 'quote/name.html', context)
 
 
 def thanks(request):
@@ -29,7 +33,7 @@ def thanks(request):
 def result(request):
     if 'your_name' in request.POST:
         message = 'you name is {name}'.format(name=request.POST['your_name'])
-        print(request.POST)
+
     else:
         message = 'You submitted an empty form'
     return HttpResponse(message)
@@ -80,11 +84,21 @@ def proof(request):
 
 
 def home(request):
-    return render(request, 'quote/home.html')
+    if request.POST:
+        print('hello1')
+
+    else:
+        print('hello2')
+        return render(request, 'quote/home.html')
+
 
 
 def calculator(request):
-    return render(request, 'quote/calculator.html')
+    if request.method == 'POST':
+        return HttpResponse(request.POST)
+
+    else:
+        return render(request, 'quote/calculator.html')
 
 
 def pdf(request):
@@ -107,3 +121,4 @@ def pdf(request):
     p.save()
     buffer.seek(0)
     return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
+
