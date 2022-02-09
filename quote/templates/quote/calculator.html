@@ -10,7 +10,9 @@
 
 <body>
 <header>
-    OrugaRent
+    <span id="logo">Oruga</span>
+    <span id="phrase">No somos el alquiler de laptops aburrido de siempre</span>
+
     <nav>
     </nav>
 </header>
@@ -19,9 +21,14 @@
     <section class="firstSection">
 
         <div class="fs_first">
-            <h2>Alquiler de laptops para empresas en Lima</h2>
-            <p id="service">Alquilamos laptops a empresas, el servicio incluye Help Desk y un software para administrar tus facturas y solicitar ayuda</p>
-            <p id="mision">La misión: Que nuestros clientes se enfoquen en su negocio y crezcan</p>
+            <h1>Alquiler de laptops para empresas </h1>
+            <h2>+ Software de gestión y Help Desk</h2>
+            <p id="service">Creamos un software gestión para que puedas solicitar atención técnica en tiempo real, pedir/devolver las laptops rápido y administrar tus alquileres de una manera simple. </p>
+            <p id="mision">La misión: Nosotros alquilamos laptops pero nuestro negocio es que nuestros clientes triunfen</p>
+            <br>
+            <button type="button" id="quoting">Cotiza en 1 clic</button>
+            <button type="button" id="ask">Conversar con un asesor</button>
+
 
         </div>
 
@@ -32,41 +39,53 @@
             <div class="circle one"></div>
 
             <div class="circle two"></div>
+            <form action="/quotePDF/" method="post">
+                {% csrf_token %}
+                <div class="calculator">
 
-            <div class="/calculator/">
-                <form action="" method="post">
-                    {% csrf_token %}
-
-                    <div class="topDiv">
-                        <div class="topPhrase">Cuota de alquiler estimada </div>
-                        <div class="topField">
-                            <div class="price">$65</div>
+                        <div class="topDiv">
+                            <div class="topPhrase">Cuota de alquiler estimada </div>
+                            <div class="topField">
+                                <div class="price">$65</div>
+                            </div>
+                            <input type="text" id="rent" name="rent" value="$65">
                         </div>
-                    </div>
 
-                    <div class="coreField">
-                        <div>
-                        <button type="button" id="buttonI5" class="button activated" value="650" >core i5</button>
-                        <button type="button" id="buttonI7" class="button" value="1000">core i7</button>
+                        <div class="coreField">
+
+                            <div class="coreField-buttons">
+                                <label for="windows">Windows</label>
+                                <input type="radio" name="Brand" value="Windows" id="windows" checked>
+
+                                <label for="apple">Apple</label>
+                                <input type="radio" name="Brand" value="Apple" id="apple">
+                            </div>
+
+                            <div class="coreField-buttons">
+                                <label for="buttonI5">Core i5</label>
+                                <input type="radio" name="processor" id="buttonI5" class="ProcessorButton" value="core i5" data-laptop-price="650" checked>
+
+                                <label for="buttonI7">Core i7</label>
+                                <input type="radio" name="processor" id="buttonI7" class="ProcessorButton" value="core i7" data-laptop-price="1000">
+                            </div>
+
                         </div>
-                    </div>
 
-                    <div class="quantity Field">
-                        <div class="fieldName">Cantidad de laptops</div>
-                        <div class="number">10</div>
-                        <input type="range" min="1" max="100" value="10">
-                    </div>
+                        <div class="quantity field">
+                            <div class="fieldName">Cantidad de laptops</div>
+                            <div id="quantityNumber" class="number">10</div>
+                            <input type="range" id="quantityRange" name="quantityNumber" min="1" max="100" value="10">
+                        </div>
 
-                    <div class="duration Field">
-                        <div class="fieldName">Duración del alquiler</div>
-                        <div class="number">6</div>
-                        <input type="range" min="1" max="36", value="6">
-                    </div>
+                        <div class="duration field">
+                            <div class="fieldName">Duración del alquiler</div>
+                            <div id="durationNumber" class="number">6</div>
+                            <input type="range" id="durationRange" name="durationNumber" min="1" max="36", value="6">
+                        </div>
 
-                    <button type="submit" class="quoteButton">Envíame la cotización</button>
-                </form>
-
-            </div>
+                        <button type="submit" class="quoteButton">Envíame la cotización</button>
+                </div>
+            </form>
         </div>
     </section>
 </main>
@@ -76,6 +95,7 @@
 
 <footer>
 
+<p>Prueba</p>
 
 </footer>
 <script type="text/javascript" src="{% static 'quote/calculator.js' %}"></script>

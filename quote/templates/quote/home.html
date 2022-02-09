@@ -12,12 +12,18 @@
 </head>
 <body>
 
-<form action="" method="POST">
+<form action="" method="post">
     {% csrf_token %}
-<input name="name" type="text">
-<input name="slider" type="range" min="0" max="10">
-<input type="submit">
+<input type="radio" id="huey" name="drone" value="huey" data-radio="huey value" >
+<input type="radio" id="dewey" name="drone" value="dewey" data-radio="dewey value" checked>
+<input type="radio" id="louie" name="drone" value="louie" data-radio="louie value" >
+    <input type="submit" value="submit">
 </form>
+
+<p></p>
+
+
+
 
 
 <script type="text/javascript" src="{% static 'quote/home.js' %}"></script>

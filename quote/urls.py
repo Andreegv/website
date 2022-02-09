@@ -11,5 +11,5 @@ urlpatterns = [
     path('proof/', views.proof, name='your_proof'),
     path('home/', views.home, name='home'),
     path('calculator/', views.calculator, name='calculator'),
-    path('pdf/', views.pdf, name='pdf')
+    path('quotePDF/', views.quotePDF, name='quotePDF')
 ]

@@ -7,6 +7,7 @@ from django.core.mail import send_mail
 from .forms import NameForm, ContactForm
 from xhtml2pdf import pisa
 from django.contrib.staticfiles import finders
+from django.template.loader import get_template
 
 
 def get_name(request):
@@ -14,8 +15,8 @@ def get_name(request):
     if request.method == 'POST':
         form = NameForm(request.POST)
         if form.is_valid():
-
-            return HttpResponse('thanks')
+            print('Hello')
+            return HttpResponse('thanks a lot')
         else:
             return HttpResponse('i-suck')
     else:
@@ -84,41 +85,44 @@ def proof(request):
 
 
 def home(request):
-    if request.POST:
-        print('hello1')
-
-    else:
-        print('hello2')
-        return render(request, 'quote/home.html')
-
+    print(request.POST)
+    return render(request, 'quote/home.html')
 
 
 def calculator(request):
     if request.method == 'POST':
-        return HttpResponse(request.POST)
+        return HttpResponse(request.POST['coreI7'])
 
     else:
         return render(request, 'quote/calculator.html')
 
 
-def pdf(request):
-    buffer = io.BytesIO()
-    p = canvas.Canvas(buffer)
-    p.setLineWidth(.3)
-    p.setFont('Helvetica', 25)
-    p.setStrokeColorRGB(255, 0, 0)
-    p.setFillColorRGB(1, 0, 1)
-    p.line(0, 0, 0, 1.7)
-    p.line(0, 0, 1, 0)
-    p.rect(0.2, 0.2, 1, 1.5, 1)
-    p.rotate(90)
-    p.setFillColorRGB(255, 0, 0, 0.7)
-    if 'name' in request.POST:
-        p.drawString(300, -100, 'you name is {name}'.format(name=request.POST['name']))
-    else:
-        p.drawString(300, -100, 'esta prueba falló')
-    p.showPage()
-    p.save()
-    buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
+def quotePDF(request):
+    print(request.POST)
+    template_path = 'quote/quotePDF.html'
 
+    rent = list(request.POST.values())[1]
+    processor = list(request.POST.values())[2]
+    quantity = list(request.POST.values())[3]
+    duration = list(request.POST.values())[4]
+    context = {
+        'rent': rent,
+        'processor': processor,
+        'quantity': quantity,
+        'duration': duration,
+    }
+
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="cotizacionOrugaRent.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response )
+    # if error then show some funy view
+    if pisa_status.err:
+        return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response

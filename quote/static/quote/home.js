@@ -1,26 +1,41 @@
-const slideValue = document.querySelector('span')
-const inputSlider = document.querySelector('input')
-const checkVerifier = document.getElementById('accept')
-const pChecker = document.getElementById('pChecker')
+droneButton = document.querySelectorAll('input[name=drone]')
+paragrah = document.querySelector('p')
+let variable = 'some random text'
+console.log(variable)
 
-checkVerifier.addEventListener('click', ()=> {
-   if (checkVerifier.checked === true) {
-      pChecker.style.color = 'red';
-   }
-   else { pChecker.style.color = 'black'
-   }
+variable = 1234
+console.log(variable)
 
-})
+if (true) {
+    variable = 'I changed it inside of a block?'
+    console.log(variable)
+}
+
+console.log(variable)
 
 
-inputSlider.oninput = ( ()=>{
-   let value = inputSlider.value;
-   slideValue.textContent = value;
-   slideValue.style.left = ((value/200)*100) + "%"
-   slideValue.classList.add('show');
-});
 
-inputSlider.onblur = (()=>{
-   slideValue.classList.remove('show');
-})
+for (const selection of droneButton) {
+    if (selection.checked) {
+        variable = selection.value
+        paragrah.innerText = variable
+        console.log(variable)
+    }
+
+}
+
+console.log(variable)
+
+for (const selection of droneButton) {
+    selection.addEventListener('click',()=>{
+        variable = selection.dataset.radio;
+        console.log(variable)
+        paragrah.innerText = variable
+    })
+
+}
+
+console.log(variable)
+
+
 

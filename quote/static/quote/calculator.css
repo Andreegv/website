@@ -13,7 +13,7 @@ html {
 body {
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(to right top, #D9AFD9, #97D9E1);
+    background: /*linear-gradient(to right top, #D9AFD9, #97D9E1);*/ white
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 50px auto auto;
@@ -48,15 +48,21 @@ body {
 
 header {
     grid-area: header;
-    height: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
+    height: 50px;
+    width: 100%;
+    background: rebeccapurple;
+    padding: 15px;
+    margin: 0 0;
     font-size: 20px;
     font-family: Roboto, sans-serif;
     font-weight: bold;
     color: white;
+}
+
+#phrase {
+    margin-left: 20px;
+    color: white;
+    font-weight: bolder;
 }
 
 main {
@@ -99,12 +105,21 @@ footer {
     justify-content: center;
 }
 
-.firstSection .fs_first h2 {
+.firstSection .fs_first h1 {
     color: purple;
     font-size: 45px;
     font-weight: bold;
-    margin: 15px 45px 25px 15px;
-    padding: 15px;
+    margin: 15px 45px 0px 15px;
+    padding: 10px;
+    width: 80%;
+}
+
+.firstSection .fs_first h2 {
+    color: black;
+    font-size: 25px;
+    font-weight: bold;
+    margin: 15px 0px 25px 15px;
+    padding: 5px;
     width: 80%;
 }
 
@@ -172,7 +187,7 @@ footer {
             rgba(255,255,255,0.5),
             rgba(255,255,255,0.2));
     backdrop-filter: blur(5px);
-    height: 400px;
+    height: 450px;
     width: 250px;
     border-radius: 10px;
     display: grid;
@@ -215,17 +230,98 @@ footer {
     font-weight: normal;
 }
 
+#rent {
+    -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+    display: none;
+
+}
+
 .coreField {
     grid-area: corebuttons;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
+    padding: 5px;
+    width: 100%;
 }
 
-.coreField div {
-    transform: translateY(5px);
+.coreField-buttons {
+    margin: 5px;
 
 }
+
+.coreField-buttons label {
+    margin-left: 10px;
+
+}
+
+.coreField-buttons input {
+    -webkit-appearance: none;
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    border: 1px solid rebeccapurple;
+}
+
+.coreField-buttons input:active:focus {
+    background: purple;
+
+}
+
+
+/*
+.ProcessorButton {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+}
+
+.ProcessorButton::after {
+  content: "";
+  position: absolute;
+  height: auto;
+  width: auto;
+  background: linear-gradient(
+            to right top,
+            rgba(240,45,255,0.9),
+            rgba(128,43,226,0.7));;
+    font-size: 18px;
+    padding: 3px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    cursor: pointer;
+    transform: translateX(-50%);
+
+}
+
+.ProcessorButton:hover::after {
+  background: rebeccapurple;
+}
+
+.ProcessorButton:checked::after {
+  background: linear-gradient(
+            to right top,
+            rgba(145,61,136,0.9),
+            rgba(154,18,179,0.7));;
+    border: solid  1px rebeccapurple;
+}
+
+
+
+#buttonI5::after {
+  content:"Core i5";
+}
+
+#buttonI7::after {
+  content:"Core i7";
+}
+
 
 .button {
     background: linear-gradient(
@@ -240,34 +336,19 @@ footer {
     box-sizing: border-box;
     cursor: pointer;
 }
+*/
 
-.activated {
-    background: linear-gradient(
-            to right top,
-            rgba(145,61,136,0.9),
-            rgba(154,18,179,0.7));;
-    border: solid  1px rebeccapurple;
-
-
-}
-
-.button:hover {
-    background: rebeccapurple;
-}
-
-
-.quantity.Field {
+.quantity.field {
     grid-area: quantity;
 }
 
-.Field {
+.field {
     display: grid;
     grid-template-columns: 1.5fr 0.3fr;
     grid-template-rows: 0.8fr 1fr;
-    margin: 15px;
+    margin: 2px 15px;
 
 }
-
 
 .number {
     background: linear-gradient(
@@ -281,7 +362,7 @@ footer {
     color: white;
 }
 
-input{
+.field input{
     -webkit-appearance: none;
     background: linear-gradient(
             to right top,
@@ -289,23 +370,32 @@ input{
             rgba(128,43,226,0.7));
     height: 3px;
     width: 80%;
-    margin-left: 5px;
+    margin: 0px 0 0 1px;
     outline: none;
 }
 
 
-input::-webkit-slider-thumb{
+.field input::-webkit-slider-thumb{
     -webkit-appearance: none;
     height: 15px;
     width: 15px;
     border-radius: 50%;
-    background: rgba(240,45,255,0.9);
+    background: linear-gradient(
+            to right top,
+            rgba(240,45,255,0.95),
+            rgba(128,43,226,0.85));
     border: 1px solid whitesmoke;
 
 }
 
 
-.duration.Field {
+.field input::-webkit-slider-runnable-track{
+    -webkit-appearance: none;
+
+
+}
+
+.duration.field {
     grid-area: duration;
 }
 
@@ -316,7 +406,9 @@ input::-webkit-slider-thumb{
             rgba(240,45,255,0.9),
             rgba(128,43,226,0.7));
     color: white;
-    margin: 25px;
+    margin: 20px 30px 20px 30px;
+    padding: 5px;
+    border: none;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -325,4 +417,35 @@ input::-webkit-slider-thumb{
 
 .quoteButton:hover {
     background: blue;
+}
+
+#buttonI5Text {
+    display: none;
+
+}
+
+#quoting {
+     background-image: linear-gradient(
+            to right top,
+            rgba(240,45,255,0.9),
+            rgba(128,43,226,0.7));
+    color: white;
+    margin-left: 10%;
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+
+}
+
+#ask {
+     background-image: linear-gradient(
+            to right top,
+            rgba(240,45,255,0.9),
+            rgba(128,43,226,0.7));
+    color: white;
+
+    padding: 5px;
+    border: none;
+    border-radius: 10px;
+
 }
