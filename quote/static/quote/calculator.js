@@ -10,7 +10,6 @@ let laptopPrice = 1
 for (const coreIntel of processor) {
     if (coreIntel.checked) {
         laptopPrice = coreIntel.dataset.laptopPrice;
-
     }
 }
 
@@ -20,7 +19,6 @@ for (const coreIntel of processor) {
         let value = Math.ceil(laptopPrice/durationFlag) + quantityFlag;
         price.innerHTML = '$'+value;
         rent.value = '$'+value;
-
     })
 }
 

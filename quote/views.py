@@ -91,22 +91,25 @@ def home(request):
 
 def calculator(request):
     if request.method == 'POST':
-        return HttpResponse(request.POST['coreI7'])
-
+        return HttpResponse("request.POST['coreI7']")
     else:
         return render(request, 'quote/calculator.html')
 
 
 def quotePDF(request):
     print(request.POST)
+    print(list(request.POST.values()))
+
     template_path = 'quote/quotePDF.html'
 
     rent = list(request.POST.values())[1]
-    processor = list(request.POST.values())[2]
-    quantity = list(request.POST.values())[3]
-    duration = list(request.POST.values())[4]
+    brand = list(request.POST.values())[2]
+    processor = list(request.POST.values())[3]
+    quantity = list(request.POST.values())[4]
+    duration = list(request.POST.values())[5]
     context = {
         'rent': rent,
+        'brand': brand,
         'processor': processor,
         'quantity': quantity,
         'duration': duration,
@@ -121,7 +124,43 @@ def quotePDF(request):
 
     # create a pdf
     pisa_status = pisa.CreatePDF(
-       html, dest=response )
+       html, dest=response)
+    # if error then show some funy view
+    if pisa_status.err:
+        return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
+
+
+def quotePDF2(request):
+    print(request.POST)
+    template_path = 'quote/quotePDF2.html'
+
+    rent = list(request.POST.values())[1]
+    duration = list(request.POST.values())[2]
+    time = list(request.POST.values())[3]
+    quantity = list(request.POST.values())[4]
+    brand = list(request.POST.values())[5]
+    processor = list(request.POST.values())[6]
+
+    context = {
+        'rent': rent,
+        'brand': brand,
+        'processor': processor,
+        'quantity': quantity,
+        'duration': duration,
+        'time': time,
+    }
+
+    # Create a Django response object, and specify content_type as pdf
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="cotizacionOrugaRent.pdf"'
+    # find the template and render it.
+    template = get_template(template_path)
+    html = template.render(context)
+
+    # create a pdf
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
     # if error then show some funy view
     if pisa_status.err:
         return HttpResponse('We had some errors <pre>' + html + '</pre>')

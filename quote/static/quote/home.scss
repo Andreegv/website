@@ -1,0 +1,661 @@
+///////1. Colour pattern///////
+
+$first-color: rgb(4,121,130);
+$second-color: rgb(218,231,161);
+$third-color: rgb(193,243,24);
+
+//////
+
+///////2. Bootstrapp modifying///////
+
+/////color///////
+$primary: $first-color;
+$secondary: $second-color;
+$success: $third-color;
+$danger: lightgrey;
+$gray-gradient: linear-gradient(109.6deg, rgb(245, 239, 249) 30.1%, rgb(207, 211, 236) 100.2%);
+
+///font//
+
+$font-family-base: 'helvetica';
+$font-size-base: 1rem;
+
+/////accordion//////
+
+$accordion-color: $primary;
+$accordion-button-focus-border-color: $success;
+$accordion-border-color: $secondary; //color of the lines above the text
+$accordion-icon-color: $success;
+$accordion-button-active-bg: whitesmoke;
+
+////navbar/////
+
+$navbar-light-brand-hover-color: red;
+$navbar-light-color: $primary;
+$navbar-light-active-color: red;
+
+
+/////grid//////
+$grid-gutter-width: 1.5rem !default;
+
+
+
+@import "scss/bootstrap.scss";
+@import 'bootstrap/css/bootstrap.min.css';
+
+///General stuff///
+
+.rounded-4 {
+  border-radius: 1rem;
+}
+
+.rounded-bottom-4 {
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+
+#photoLanding {
+  width: 100%;
+  object-fit: cover;
+}
+
+
+.title {
+  border-radius: 15px 15px 0 0;
+  text-align: center;
+  font-weight: bold;
+  color: $primary;
+}
+
+.info {
+  width: inherit;
+  border: none;
+  border-radius: 0 0 15px 15px;
+  padding: 10px;
+  text-align: center;
+}
+
+/////////*Making input without arrows*//////
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+
+a {
+  text-decoration: none;
+  color: $primary;
+  font-weight: bold;
+}
+
+
+nav {
+  min-height: 15vh;
+
+}
+
+#first-slide {
+  background-color: $secondary;
+
+  h1 {
+    margin: 5rem 0 0 2.5rem;
+    font-weight: bolder;
+    color: $primary;
+  }
+
+  p {
+    color: $primary;
+    margin: 1.25rem 0 0 2.5rem;
+
+
+    span {
+
+      background-color: $third-color;
+    }
+
+  }
+
+  button {
+    margin: 1.5rem 0 1.5rem 2.5rem;
+
+    padding: 1.25rem 2.5rem;
+    font-weight: bold;
+  }
+}
+
+#second-slide {
+  background: $gray-gradient;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  label, input {
+    font-size: 0.85rem;
+  }
+
+  .row {
+    height: 85vh;
+    padding: 3rem 0 0 2.5rem;
+
+
+    .invitation {
+      color: $primary;
+
+      p:first-child  {
+        font-weight: bold;
+      }
+    }
+
+    .price-card {
+      box-shadow: 5px 5px 10px darkgrey;
+      display: inline-block;
+      width: 225px;
+      min-width: 225px;
+      height: auto;
+
+      .title {
+        font-size: 3.5rem;
+        color: darkgrey;
+        font-weight: bolder;
+        border-radius: 15px 15px 0 0;
+      }
+
+      .description {
+        background: #C9CCD3;
+        background-image: linear-gradient(45deg, rgba(255,255,255,0.10), rgba(0,0,0,1));
+        background-blend-mode: lighten;
+        color: $primary;
+        text-align: center;
+        font-weight: bold;
+      }
+    }
+
+    .needs-card {
+      width: 225px;
+      min-width: 225px;
+      height: auto;
+
+      .description {
+        font-size: 0.9rem;
+      }
+
+    }
+
+    .data-card {
+      width: 225px;
+      min-width: 225px;
+    }
+
+  }
+
+  #rent {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: none;
+  }
+
+}
+
+#third-slide {
+
+
+  .col-10 {
+
+  }
+
+  .card {
+    box-shadow: 5px 5px 10px darkgrey;
+    height: 300px;
+    width: 300px;
+    margin: 0 2rem 2rem 2rem;
+
+  }
+
+  .card-title::before {
+    content: '';
+    display: inline-block;
+    width: 0.5rem;
+    height: 1.5rem;
+    background-color: $success;
+    margin-right: 0.5rem;
+  }
+}
+
+
+
+/*  /////////Fourth-Slide//////////// */
+
+#fourth-slide {
+  background: $gray-gradient;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*  1. Dummy row */
+
+.dummy-row {
+  display:none;
+}
+
+.dummy-td1 {
+  color: transparent;
+}
+
+.dummy-td2 {
+  text-align: center;
+  font-weight: bold;
+  background-color: transparent;
+  color: $primary;
+}
+
+/*  2. Table formatting */
+
+table {
+  border-collapse: separate;
+  table-layout: fixed;
+  width: 100%;
+}
+
+th {
+  text-align: center;
+  padding: 0rem;
+}
+
+td, th {
+  border-radius: 0.25rem;
+  color: $primary;
+}
+
+td {
+  padding: 0.30rem;
+  font-size: 0.85rem;
+}
+
+.th-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  height: 250px;
+}
+
+
+td:nth-child(1) {
+  color: $primary;
+  font-weight: bold;
+  background-color: rgb(248,248,248);
+}
+
+.table-rent-type {
+  background-color: $success;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0.25rem;
+  color: $primary;
+  padding: 0.25rem 0.5rem 0.25rem 0.5rem;
+  height: 70px;
+  flex-shrink: 0;
+
+}
+
+.table-rent-price {
+  text-align: center;
+  font-size: 3.5rem;
+  color: $primary;
+  span {
+    font-size: 0.8rem;
+  }
+}
+
+.table-rent-description {
+  font-size: 0.85rem;
+  font-weight: lighter;
+  text-align: center;
+  padding: 0.25rem 1rem 0.25rem 1rem;
+  color: $primary;
+  flex-shrink: 0;
+}
+
+/*  /////////Fifth-Slide//////////// */
+
+#fifth-slide {
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .raw {
+    width: 100%;
+    height: auto;
+  }
+}
+
+/*  /////////Media-Queries//////////// */
+
+
+@media (max-width: 576px) {
+
+  #first-slide {
+    min-height: 85vh;
+
+    .row {
+    height: auto;
+
+  }
+    h1 {
+      margin: 2rem;
+    }
+
+    p {
+      margin: 2rem;
+
+      span {
+
+      }
+    }
+    button {
+      margin: 0 2rem 2rem 2rem;
+    }
+  }
+
+  #second-slide {
+    .row {
+      height: auto;
+      padding: 2rem 0 1.5rem 2.5rem;
+    }
+
+    .calculator-wrap {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+
+      .needs-card {
+      margin-top: 1rem
+      }
+
+      .data-card {
+        margin-top: 1rem;
+      }
+    }
+
+  }
+
+  #fourth-slide {
+
+    .dummy-row {
+      display: table-row;
+    }
+
+    td:nth-child(1), th:nth-child(1) {
+      display: none;
+    }
+
+    thead {
+      vertical-align: top;
+      padding: 0;
+    }
+
+    table {
+      border-spacing: 0.5rem;
+      width: 100%;
+
+    }
+
+    .table-rent-type {
+      font-size: 0.8rem;
+      height: 60px;
+    }
+
+    .table-rent-price {
+      font-size: 2.8rem;
+      align-items: center;
+
+      span {
+        font-size: 0.4rem;
+      }
+    }
+
+    .table-rent-description {
+      font-size: 0.65rem;
+    }
+
+    .th-div {
+      height: 220px;
+    }
+  }
+}
+
+@media (min-width: 576px) and (max-width: 768px) {
+
+  #first-slide {
+    min-height: 85vh;
+  }
+
+  #second-slide {
+    .row {
+      height: auto;
+      padding: 2rem 0 1.5rem 2.5rem;
+    }
+
+    .calculator-wrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: start;
+      margin-top: 1rem;
+
+      .data-card {
+        margin-left: 1rem;
+      }
+    }
+
+  }
+
+  #fourth-slide {
+    .dummy-row {
+      display:table-row;
+    }
+
+    td:nth-child(1), th:nth-child(1)  {
+      display: none;
+    }
+
+    thead {
+      vertical-align: top;
+      padding: 0;
+    }
+
+    table {
+      border-spacing: 0.5rem;
+      width: 100%;
+
+    }
+
+    .table-rent-price {
+      font-size: 3rem;
+      flex-shrink: 0;
+
+      span {
+        font-size: 0.6rem;
+      }
+    }
+
+    .table-rent-description {
+      font-size: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .th-div {
+      height: 220px;
+    }
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 992px) {
+
+
+  #first-slide {
+    min-height: 85vh;
+
+    .row {
+      height: auto;
+
+    }
+  }
+
+  #second-slide {
+    .row {
+      height: auto;
+      padding: 2rem 0 1.5rem 2.5rem;
+    }
+
+    .col-12.col-lg-8 {
+      display: flex;
+      justify-content: space-evenly;
+      align-items: start;
+    }
+
+    .calculator-wrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: start;
+      margin-left: 1rem;
+      margin-right: 1rem;
+
+      .data-card {
+        margin-left: 1rem;
+      }
+    }
+
+  }
+
+  #fourth-slide {
+    table {
+      border-spacing: 0.75rem;
+      width: 100%;
+    }
+
+    td {
+      padding: 0.6rem;
+    }
+
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+
+  nav {
+
+    a {
+      margin-left: 2.5rem;
+    }
+
+    .nav-item {
+      padding-top: 20px;
+    }
+
+}
+
+  #first-slide {
+    min-height: 85vh;
+  }
+
+  #second-slide {
+
+    .calculator-wrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: start;
+      margin-top: 1.5rem;
+
+      .data-card {
+        margin-left: 1rem;
+      }
+
+    }
+
+  }
+
+  #fourth-slide {
+    table {
+      border-spacing: 0.75rem;
+    }
+
+    td {
+      padding: 0.6rem;
+    }
+
+  }
+
+
+}
+
+@media (min-width: 1200px) {
+
+  nav {
+
+    a {
+      margin-left: 2.5rem;
+    }
+
+
+  .nav-item {
+    padding-top: 20px;
+  }
+
+}
+
+  #first-slide {
+    height: 85vh;
+  }
+
+  #second-slide {
+    .col-12.col-lg-8 {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+    }
+
+    .calculator-wrap {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      align-items: start;
+      margin-left: 1rem;
+      margin-right: 1rem;
+
+      .data-card {
+        margin-left: 1rem;
+      }
+
+
+
+    }
+
+  }
+
+  #fourth-slide {
+
+    table {
+      border-spacing: 0.75rem;
+    }
+
+    td {
+      padding: 0.6rem;
+    }
+  }
+
+}
+

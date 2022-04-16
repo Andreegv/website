@@ -1,6 +1,7 @@
 {% load static %}
 
 <!doctype html>
+
 <html lang="en">
 <head>
     <link rel="stylesheet" href="{% static 'quote/home.css' %}">
@@ -8,25 +9,391 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cotizador Web</title>
+
+    <title>Oruga</title>
 </head>
 <body>
 
-<form action="" method="post">
-    {% csrf_token %}
-<input type="radio" id="huey" name="drone" value="huey" data-radio="huey value" >
-<input type="radio" id="dewey" name="drone" value="dewey" data-radio="dewey value" checked>
-<input type="radio" id="louie" name="drone" value="louie" data-radio="louie value" >
-    <input type="submit" value="submit">
-</form>
+<!-- ///////////////////////////NAV//////////////////////////////////////// -->
 
-<p></p>
+<!--
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-secondary">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#first-slide"><img src="{% static 'quote/orugalogomenutest2.svg' %}" style="min-height: 35px;" alt=""></a>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src="{% static 'quote/orugalogomenutest2.svg' %}" style="min-height: 35px;" alt=""></h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="#second-slide">Cotiza inmediato</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#third-slide">¿Qué incluye el servicio?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#fourth-slide">Tipos de alquiler</a>
+          </li>
+
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</nav>
+
+-->
+
+
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-secondary">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand navbar-text" href="#first-slide"> <img src="{% static 'quote/orugalogomenutest2.svg' %}" alt="" style="min-height: 35px;"> </a>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item navbar-text">
+          <a class="nav-link" aria-current="page" href="#second-slide">Cotiza Ahora</a>
+        </li>
+        <li class="nav-item navbar-text">
+          <a class="nav-link" href="#third-slide">¿Qué incluye el Servicio?</a>
+        </li>
+        <li class="nav-item navbar-text">
+          <a class="nav-link" href="#fourth-slide">Tipos de alquiler</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ///////////////////////////FIRST-SLIDE//////////////////////////////////////// -->
+
+<div class="container-fluid" id="first-slide">
+    <div class="row">
+        <div class="col-12 col-md-6 " >
+            <div class="flex-column">
+                <h1>Haz crecer tu empresa sin invertir en laptops ni personal técnico</h1>
+                <p><span>Alquila laptops</span> sin restricciones ni trámites engorrosos.
+                            No te pedimos tus Estados Financieros. </p>
+                <button type="button" class="btn btn-primary">Cotiza al Instante</button>
+            </div>
+        </div>
+    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center">
+        <img id="photoLanding" src="{% static 'quote/FotoLanding869x567_0.18.png' %}" alt="laptop renting">
+    </div>
+    </div>
+</div>
+
+<!-- ////////////////////////////////// SECOND-SLIDE COTIZA AL INSTANTE /////////////////////////-->
+
+<div class="container-fluid" id="second-slide">
+    <div class="row">
+        <div class="col-12 col-lg-4 invitation">
+            <h1>¡No esperes más para cotizar tu alquiler!</h1>
+            <p class="mb-4 mt-4">Dinos qué necesitas,  ingresa tus datos y recibe una cotización en tu correo electrónico al instante.</p>
+        </div>
+        <div class="col-12 col-lg-8">
+                <div class="price-card rounded-4">
+                    <div id="price" class="title bg-white rounded-4">
+                        $0
+                        <!--<table>
+                        <tr>
+                           <td>Por laptop</td>
+                            <td>$75</td>
+                        </tr>
+                        <tr>
+                            <td>Total</td>
+                            <td>$750</td>
+                        </tr>
+                        </table> -->
+                    </div>
+                    <div class="description rounded-bottom-4 p-1">Cuota mensual
+                    <p class="text-primary m-0" style="font-size: 0.6rem">*Precio Referencial, en US$ sin IGV.</p>
+                    </div>
+                </div>
+            <form action="/quotePDF2/" method="post">
+                {% csrf_token %}
+                <div class="calculator-wrap">
+                    <input type="text" name="rent" id="rent">
+                    <div class="needs-card rounded-4">
+                        <div class="title bg-success p-2">
+                            1.¿qué necesitas?
+                        </div>
+                        <div id="duration" class="description bg-white text-primary fw-bold p-1 ps-3 pe-3">
+                            Plazo de alquiler
+                            <div class="input-group mb-2">
+                                <input type="radio" class="btn-check" name="duration" id="months" autocomplete="off" value="meses" checked>
+                                <label class="btn btn-outline-danger text-primary" for="months">meses</label>
+                                <input type="radio" class="btn-check" name="duration" id="days" autocomplete="off" value="días">
+                                <label class="btn btn-outline-danger text-primary" for="days">días</label>
+                                <input type="number" class="form-control" placeholder="" aria-label="Example text with two button addons" name="duration-number">
+                            </div>
+                        </div>
+                        <div id="quantity" class="description bg-white text-primary fw-bold p-1 ps-3 pe-3">Cantidad de laptops
+                            <div class="input-group mb-2">
+                              <span class="input-group-text bg-danger text-primary">unidades</span>
+                              <input type="number" name="quantity" class="form-control text-primary" aria-label="Dollar amount (with dot and two decimal places)">
+                            </div>
+                        </div>
+                        <div class="description bg-white text-primary fw-bold p-1 ps-3 pe-3">
+                            Sistema Operativo
+                            <div class="input-group mb-2">
+                                <input type="radio" class="btn-check" name="os" id="windows" autocomplete="off" checked value="Windows">
+                                <label class="btn btn-outline-danger text-primary" for="windows">Windows</label>
+
+                                <input type="radio" class="btn-check" name="os" id="mac os" autocomplete="off" value="Mac OS">
+                                <label class="btn btn-outline-danger text-primary" for="mac os">Mac OS</label>
+
+                            </div>
+                        </div>
+                        <div class="description bg-white text-primary fw-bold p-1 ps-3 pe-3 rounded-bottom-4">
+                            Procesador
+                            <div class="input-group mb-2">
+                                <input type="radio" class="btn-check" name="processors" id="ci5" autocomplete="off" checked value="ci5">
+                                <label class="btn btn-outline-danger text-primary" for="ci5">Ci5</label>
+
+                                <input type="radio" class="btn-check" name="processors" id="ci7" autocomplete="off" value="ci7">
+                                <label class="btn btn-outline-danger text-primary" for="ci7">Ci7</label>
+                            </div>
+                        </div>
+                   </div>
+                    <div class="data-card bg-white rounded-4">
+                        <div class="title bg-success p-2">2.Ingresa tus datos
+                        </div>
+                        <div class="description bg-white m-2">
+                        <input type="text" class="form-control border-danger" placeholder="Nombre y apellidos" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="description bg-white m-2">
+                            <input type="text" class="form-control border-danger" placeholder="correo corporativo" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="description bg-white m-2">
+                            <input type="text" class="form-control border-danger" placeholder="RUC de la empresa" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <div class="description bg-white m-2">
+                            <input type="text" class="form-control border-danger" placeholder="Número de celular" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+                        <button type="submit" class="info bg-primary text-white fw-bold">Envíame una cotización
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- ////////////////////////////////// THIRD-SLIDE SOPORTE TÉCNICO /////////////////////////-->
+
+<div class="container-fluid bg-white" id="third-slide" >
+    <div class="row justify-content-evenly p-2">
+
+        <div class="col-10 col-md-10 justify-content-center mt-4 mb-4 ms-3 me-3">
+            <h1 class="text-center text-primary p-3">¿Qué incluye el Servicio?</h1>
+        </div>
+        <div class="col-10 col-lg-3 col-xl-3 m-3 mb-5">
+
+                    <h2 class="card-title text-primary fw-bold">01 Delivery gratis</h2>
+                    <p class="card-text text-black">El delivery está incluido en tu alquiler. Solicita tus laptops y en menos de 48 horas las tendrás en la puerta de tu empresa. </p>
+        </div>
+        <div class="col-10 col-lg-3 col-xl-3 m-3 mb-5">
+
+                    <h2 class="card-title text-primary fw-bold">02 Help Desk</h2>
+                    <p class="card-text text-black">Cualquier incidencia técnica es atendida en menos de 10 minutos. No permitas que tus empleados paren de producir por problemas técnicos</p>
+        </div>
+
+        <div class="col-10 col-lg-3 col-xl-3 m-3 mb-5">
+
+                    <h2 class="card-title text-primary fw-bold">03 Recambio</h2>
+                    <p class="card-text text-black">¡No pares de producir nunca!. Si no podemos solucionar el problema vía remota te cambiamos la laptop sin dudarlo.</p>
+        </div>
+    </div>
+
+    <div class="row justify-content-center bg-primary">
+        <div class="col-12 p-4 mb-4 mt-4" >
+                <h4 class="title text-white p-2">¿No necesitas el Servicio y solo quieres las laptops?</h4>
+                <div class="description p-2 text-white text-center">No te preocupes, somos partners de Hewett Packard, podemos ayudarte</div>
+                <div class="info p-1 text-success"><a class=" p-1 text-success" href="">Más información</a></div>
+        </div>
+    </div>
+</div>
+
+<!-- ////////////////////////////////// FOURTH-TIPOS DE ALQUILER /////////////////////////-->
+
+<div class="container-fluid pt-5 p-4 pb-5"  id="fourth-slide">
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-12 col-md-10 mb-4"><h1 class="text-primary text-center">Tipos de alquiler</h1>
+        </div>
+        <div class="col-12 col-md-10">
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th class="bg-white">
+                            <div class="th-div">
+                                <div class="table-rent-type">
+                                    Alquiler sin contrato
+                                </div>
+                                <div class="table-rent-price">$75<span>/laptop</span></div>
+                                <div class="table-rent-description">
+                                    Para empresas con proyectos y eventos de corto plazo</div>
+                            </div>
+                        </th>
+                        <th class="bg-white">
+                            <div class="th-div">
+                                <div class="table-rent-type">Alquiler con contrato
+                                </div>
+                                <div class="table-rent-price">$45<span>/laptop</span>
+                                </div>
+                                <div class="table-rent-description">
+                                    Para empresas que buscan crecer sin invertir en laptops ni personal técnico
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class=dummy-row>
+                      <td class="dummy-td1"> dummy </td>
+                      <td colspan="2" class="dummy-td2"> Plazo de alquiler</td>
+                    </tr>
+
+                    <tr>
+                        <td>Plazo de alquiler</td>
+                        <td class="bg-white">De 1 día a 1 año </td>
+                        <td class="bg-white">De 1 año a 3 años </td>
+                    </tr>
+
+                    <tr class=dummy-row>
+                      <td class="dummy-td1"> dummy </td>
+                      <td colspan="2" class="dummy-td2">Firma de Contrato</td>
+                    </tr>
+
+                    <tr>
+                        <td>Firma de Contrato</td>
+                        <td class="bg-white">No</td>
+                        <td class="bg-white">Sí</td>
+                    </tr>
+
+                    <tr class=dummy-row>
+                      <td class="dummy-td1"> dummy </td>
+                      <td colspan="2" class="dummy-td2">Servicio Técnico</td>
+                    </tr>
+
+                    <tr>
+                        <td>Servicio Técnico</td>
+                        <td colspan="2" class="bg-white">El alquiler incluye Servicio Técnico</td>
+                    </tr>
+
+                    <tr class=dummy-row>
+                      <td class="dummy-td1"> dummy </td>
+                      <td colspan="2" class="dummy-td2">Presentación de Estados Financieros</td>
+                    </tr>
+
+                    <tr>
+                        <td>Presentación de Estados Financieros</td>
+                        <td colspan="2" class="bg-white">No te pedimos tus Estados Financieros. Te evaluamos con tu RUC</td>
+                    </tr>
+
+                    <tr class=dummy-row>
+                      <td class="dummy-td1"> dummy </td>
+                      <td colspan="2" class="dummy-td2">Marcas</td>
+                    </tr>
+
+                    <tr>
+                        <td>Marcas</td>
+                        <td colspan="2" class="bg-white">HP, Lenovo, Apple</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<!-- ////////////////////////////////// FIFTH-SLIDE FAQ /////////////////////////-->
+
+
+<div class="container-fluid pt-5 pb-2" id="fifth-slide">
+    <div class="raw ms-3 me-3 mb-2 align-items-center d-flex flex-column justify-content-center">
+
+        <div class="col-12 col-md-8 mt-4 mb-4">
+            <h3 class="text-center text-primary fw-bold p-3">Respondemos tus dudas</h3>
+        </div>
+        <div class="col-12 col-md-8 mb-4">
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                    ¿Atienden a personas naturales?
+                  </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">No, solo atendemos a empresas.</div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                    ¿Cómo evalúan a mi empresa?</button></h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">Te evaluamos solo con tu RUC. A diferencia de los bancos no pedimos tus estados financieros.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                  <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                    ¿Cuánto demoran en evaluar a mi empresa?</button></h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">La evaluación se realiza en menos de 2 horas, contados a partir de la comunicación con el asesor comercial.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFour">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                    ¿Debo de firmar un contrato para alquilar laptops?</button></h2>
+                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                  <div class="accordion-body">Solo te pediremos la firma de un contrato para alquileres  mayores a 1 año. Sin embargo, la firma de uno te permite acceder a mejores tarifas.
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ///////////////////////////////////////FOOTER /////////////////////////////////-->
+
+<div class="container-fluid">
+    <div class="row bg-success p-5">
+        <div class="col-12 col-md-4"><img src="{% static 'quote/orugalogomenutest2.svg' %}" style="height: 35px;" alt=""></div>
+        <div class="col-12 col-md-4 pt-2"><a href="">Datos de la empresa</a></div>
+        <div class="col-12 col-md-4 pt-2"><a href="">Visión y Misión</a></div>
+        <br><br>
+        <hr class="m-3">
+        <div class="col-12 col-md-4 ">©2022 Todos los derechos reservados. Oruga® es una marca registrada 100% peruana. <br><strong>| Condiciones | Preferencias de cookies</strong></div>
+    </div>
+</div>
+
+
+<script src="{% static 'quote/bootstrap/js/bootstrap.min.js'%}"></script>
+<script src="{% static 'quote/home.js'%}"></script>
 
 
 
 
 
-<script type="text/javascript" src="{% static 'quote/home.js' %}"></script>
+
 </body>
-
 </html>
+

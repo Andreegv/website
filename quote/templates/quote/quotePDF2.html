@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+<style>
+
+h1 {
+    background-color: rgb(4,121,130);
+    font-weight: bold;
+    font-size: 20px;
+    color: white;
+}
+div {
+    background-color: rgb(218,231,161);
+}
+table {
+    border-width: thin;
+    border-color: purple;
+    background-color: rgb(218,231,161);
+    font-size: 15px;
+}
+</style>
+</head>
+<body>
+
+<h1>Cotización de alquiler de laptops | OrugaRent</h1>
+
+<table>
+  <tr>
+    <th>Descripción</th>
+    <th>Valor</th>
+  </tr>
+
+  <tr>
+    <td>Cuota de alquiler por laptop</td>
+    <td>{{ rent }} </td>
+  </tr>
+
+  <tr>
+    <td>Duración del alquiler</td>
+    <td>{{ time }} {{ duration }}</td>
+  </tr>
+
+  <tr>
+    <td>Cantidad de laptops solicitadas</td>
+    <td>{{ quantity }}</td>
+  </tr>
+
+  <tr>
+    <td>Sistema Operativo</td>
+    <td>{{ brand }} </td>
+  </tr>
+
+  <tr>
+    <td>Procesador solicitado</td>
+    <td>{{ processor }}</td>
+  </tr>
+
+</table>
+
+</body>
+</html>
